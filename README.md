@@ -29,6 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Next.js](https://nextjs.org/docs)
 - [Auth.js](https://authjs.dev/getting-started/installation)
 - [Google OAuth](https://developers.google.com/identity/protocols/oauth2?hl=pt-br)
+- [Firebase](https://firebase.google.com/docs/admin/setup?hl=pt-br#add-sdk)
 
 ## 📂 Project
 
