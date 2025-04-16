@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
-import { handleAuth } from "@/app/actions/handleSignIn";
+import Link from "next/link";
 import { auth } from "@/app/lib/auth";
+import { handleAuth } from "@/app/actions/handleSignIn";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -21,11 +22,15 @@ export default async function Dashboard() {
         <span>{session?.user?.email}</span>
       </div>
       {session?.user?.email && (
-        <form action={handleAuth}>
-          <button className="border rounded-md p-4 cursor-pointer transition-colors hover:bg-green-300">
-            Sign out
-          </button>
-        </form>
+        <>
+          <form action={handleAuth}>
+            <button className="border rounded-md p-4 cursor-pointer transition-colors hover:bg-green-300">
+              Sign out
+            </button>
+          </form>
+
+          <Link href="/checkout">Pagamentos</Link>
+        </>
       )}
     </div>
   );
