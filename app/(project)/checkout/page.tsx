@@ -1,19 +1,13 @@
-"use client";
+import { auth } from "@/app/lib/auth";
+import { redirect } from "next/navigation";
+import CheckoutClient from "./checkout-client";
 
-import { useStripe } from "@/app/hooks/useStripe";
+export default async function Checkout() {
+  const session = await auth();
 
-export default function Checkout() {
-  const { createPaymentStripeCheckout } = useStripe();
+  if (!session) {
+    redirect("/login");
+  }
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8">
-      <h1 className="text-4xl font-bold">Pagamentos</h1>
-      <button
-        className="p-4 border rounded-md cursor-pointer"
-        onClick={() => createPaymentStripeCheckout({ testeId: "123" })}
-      >
-        Checkout
-      </button>
-    </div>
-  );
+  return <CheckoutClient />;
 }
